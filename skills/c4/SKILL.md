@@ -110,12 +110,27 @@ diagrams-as-code so it lives with the source and stays current:
 - **Structurizr DSL** — the model-based, first-party approach: describe the model
   once, render every level/view from it. Best for a maintained architecture model.
 - **Mermaid C4** — `C4Context` / `C4Container` / `C4Component` / `C4Dynamic` /
-  `C4Deployment` blocks. Renders on GitHub and in Markdown; good for docs that live in
-  the repo (Albitor uses Mermaid — prefer it for in-repo architecture docs).
+  `C4Deployment` blocks. Renders on GitHub, in Markdown, and in the Albitor Docs pane.
+  **Use Mermaid for an Albitor app's in-repo architecture docs.**
 - **PlantUML** with the C4-PlantUML macro library — mature, flexible, image output.
 
 Prefer whichever renders inside the project's docs pipeline; keep the diagram source
 next to the code so it's reviewed and updated with changes.
+
+### Diagrams in the Albitor Docs pane
+
+An app's `docs/` directory is read live and rendered in that app's **Docs** pane. Write
+every diagram there as Mermaid.
+
+- Write each diagram in a ```` ```mermaid ```` fence. The pane draws it.
+- Do not draw a diagram as ASCII art in a fence. The pane renders that fence as a code
+  block, and the drawing breaks on a reader's font or window width.
+- Do not link an image file for a diagram. The pane renders the doc's own text, and a
+  relative image path does not resolve.
+- Put a Markdown heading above every diagram. The pane lists headings in a contents
+  rail, so the heading is how a reader reaches the diagram.
+- Do not set colours in a diagram. The pane redraws it in the reader's own light or
+  dark theme, and hardcoded colours are then wrong in one of the two.
 
 ## When authoring an app's architecture docs
 
