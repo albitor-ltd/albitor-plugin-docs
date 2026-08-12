@@ -129,6 +129,42 @@ decision parts:
    and a real glossary add a lot for little effort.
 5. Don't pad. Placeholder-and-move-on beats filler.
 
+## How the Albitor Docs pane reads an app's `docs/`
+
+An app's `docs/` directory is read live from the default branch and rendered in that
+app's **Docs** pane. The pane is not a file browser, so write to these rules.
+
+**Navigation.** The pane lists one entry per file, in a sidebar.
+
+- Title each file with a first-level Markdown heading, or a front-matter `title`. The
+  pane uses it as the sidebar entry. Without either it falls back to the filename.
+- Put related files in one directory. The pane groups by the first directory under
+  `docs/`, or by a front-matter `group`. Keep ADRs in `docs/decisions/`.
+- Name a file so it sorts where a reader expects. The pane sorts by title inside a
+  group. Zero-pad an ADR number (`0007-`, not `7-`).
+- Write `docs/README.md` as an index. Files directly under `docs/` are listed before
+  every group, so the index lands first.
+
+**Links between documents.** The pane resolves a relative link against the directory of
+the document that carries it.
+
+- Link to another document by its relative path, including the `.md` extension:
+  `[ADR-0007](decisions/0007-last-write-wins.md)`. The pane opens it.
+- Do not link to a directory. `[the decisions](decisions/)` reaches no document. The
+  pane strips such a link and leaves its text as prose.
+- Do not assume a repository URL. Write the relative path, not a GitHub link.
+
+**Sections.** The pane gives every heading an anchor and lists `##` and `###` headings
+in a contents rail beside the document.
+
+- Break a long document into `##` sections. The rail is how a reader navigates it, and
+  a section anchor is what a reader sends a colleague.
+- Keep each heading distinct within a document. Two identical headings both work, but
+  the rail then shows the same label twice.
+
+**Anything else.** The pane renders Markdown, plus Mermaid diagrams (see the `c4`
+skill). It does not run scripts, load images, or resolve links out of `docs/`.
+
 ## Related
 
 - `c4` skill — the diagrams that populate §3, §5, §6, §7.
