@@ -1,3 +1,5 @@
+> **Archived 2026-10-26.** Superseded by [albitor-ltd/albitor-plugins](https://github.com/albitor-ltd/albitor-plugins) (`plugins/docs`, tag `docs/v0.2.0`). Read-only.
+
 # Documentation frameworks plugin (`docs`)
 
 A [Claude Code plugin](https://code.claude.com/docs/en/plugins) that packages three
